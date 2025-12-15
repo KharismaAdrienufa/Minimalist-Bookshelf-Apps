@@ -1,0 +1,19 @@
+body {
+    background-color: #F6EAFC;
+}
+
+header {
+    position: relative;;
+}
+
+.searchBook-content {
+    position: absolute;
+    right: 15px;
+}
+
+/* .addBook-content,
+.incompleteBook-content,
+.completeBook-content {
+    width: 25%;
+} */
+
