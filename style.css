@@ -1,19 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color-lilac: #F6EAFC;
+    --color-dark-purple: #704E8D;
+    --color-purple: #C1B1CD;
+    --color-ash-purple: #E1DAE7;
+    --color-pink: #FF6BBC;
+    --color-baby-pink: #FFDAEE;
+}
+
 body {
-    background-color: #F6EAFC;
+    background-color: var(--color-lilac);
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 }
 
 header {
-    position: relative;;
+    position: relative;
 }
 
-.searchBook-content {
+.searchBook-bar {
     position: absolute;
+    margin-top: 25px;
     right: 15px;
 }
 
-/* .addBook-content,
-.incompleteBook-content,
-.completeBook-content {
+.semi-hidden {
+    color: var(--color-lilac);
+    font-size: 1px;
+}
+
+.search-box {
+    width: 100px;
+    height: 25px;
+    border-radius: 25px;
+    padding: 5px;
+    border-style: none;
+    background-color: var(--color-dark-purple);
+    color: var(--color-lilac);
+    position: relative;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.search-button {
+    background: none;
+    color: var(--color-lilac);
+    position: absolute;
+    right: 5px;
+    margin: 3px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-content {
+    width: 75%;
+    margin: 75px 0 25px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.line-deco {
+    height: 2px;
+    width: 90%;
+    margin: 0;
+}
+
+h1,
+h3 {
+    font-family: 'Crimson Text', serif;
+}
+
+p {
+    font-size: small;
+}
+
+.card {
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(64, 63, 65, 0.2);
+}
+
+.listBook-content {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.incompleteBook,
+.completeBook {
+    background-color: var(--color-ash-purple);
+}
+
+.bookItem,
+.addBook {
+    background-color: white;
+}
+
+.bookItem {
+    position: relative;
+}
+
+.uncheck-button,
+.check-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 40px;
+}
+
+.uncheck-button {
+    color: var(--color-baby-pink);
+}
+
+.check-button {
+    color: var(--color-pink);
+}
+
+.delete-button {
+    right: 10px;
+}
+
+.edit-button {
+    left: 10px;
+}
+
+.delete-button,
+.edit-button {
+    position: absolute;
+    bottom: 10px;
+    color: var(--color-dark-purple);
+}
+
+.side-content {
+    margin: 150px 50px 0 0;
     width: 25%;
-} */
+}
+
+label {
+    font-size: small;
+}
+
+.addBook-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 15px;
+}
+
+.addBook-form input {
+    border: none;
+    border-bottom: 1px solid var(--color-pink);
+}
+
+.checkBook {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--color-pink);
+    width: 20px;
+    height: 15px;
+}
+
+.addBook-button {
+    width: 80px;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: var(--color-purple);
+    align-self: center;
+}
 

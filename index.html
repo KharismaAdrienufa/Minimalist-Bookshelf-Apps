@@ -4,101 +4,113 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookshelf App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
-
+    
     <!-- Impor script kamu di sini -->
     <!-- Lampirkan `defer` jika pemanggilan dilakukan dalam <head> -->
-    <script defer src="main.js"></script>
-  </head>
-  <body>
-    <header>
-      <section class="searchBook-content">
-        <form id="searchBook" data-testid="searchBookForm">
-          <label for="searchBookTitle">Title</label>
-          <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
-          <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
-            Search
-          </button>
-        </form>
-      </section>
-    </header>
-    
-    <main>
-      <h1>Bookshelf App</h1>
-      <div class="main-content">
-        <section class="addBook-content">
-          <h2>Add Book</h2>
-          <form id="bookForm" data-testid="bookForm">
-            <div>
-              <label for="bookFormTitle">Title</label>
-              <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
-            </div>
-            <div>
-              <label for="bookFormAuthor">Author</label>
-              <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
-            </div>
-            <div>
-              <label for="bookFormYear">Year</label>
-              <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
-            </div>
-            <div>
-              <label for="bookFormIsComplete">Completed</label>
-              <input
-                id="bookFormIsComplete"
-                type="checkbox"
-                data-testid="bookFormIsCompleteCheckbox"
-              />
-            </div>
-            <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
-              Move Book To Incompleted<span>Incompleted</span>
+      <script defer src="main.js"></script>
+    </head>
+    <body>
+      <header>
+        <section class="searchBook-bar">
+          <form id="searchBook" data-testid="searchBookForm">
+            <label for="searchBookTitle" class="semi-hidden">Title</label>
+            <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" class="search-box"/>
+            <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton" class="search-button">
+              <i class="material-icons">search</i>
             </button>
           </form>
         </section>
-  
-  
-        <section class="incompleteBook-content">
-          <h2>Incomplete Book</h2>
-  
-          <div id="incompleteBookList" data-testid="incompleteBookList">
-            <!-- 
-              Ini adalah struktur HTML untuk masing-masing buku.
-              Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
-            -->
-            <div data-bookid="123123123" data-testid="bookItem">
-              <h3 data-testid="bookItemTitle">Book Title 1</h3>
-              <p data-testid="bookItemAuthor">Author: Book Author 1</p>
-              <p data-testid="bookItemYear">Year: 2030</p>
-              <div>
-                <button data-testid="bookItemIsCompleteButton">Completed</button>
-                <button data-testid="bookItemDeleteButton">Delete Book</button>
-                <button data-testid="bookItemEditButton">Edit Book</button>
+      </header>
+      
+      <main>
+        <div class="main-content">
+          <h1>Booksh<br>elf<br>App</h1>
+          <hr class="line-deco">
+          <div class="listBook-content">
+            <section class="incompleteBook card">
+              <h3>Incomplete Book</h3>
+              <div id="incompleteBookList" data-testid="incompleteBookList">
+                <!-- 
+                  Ini adalah struktur HTML untuk masing-masing buku.
+                  Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
+                -->
+                <div data-bookid="123123123" data-testid="bookItem" class="bookItem card">
+                  <h5 data-testid="bookItemTitle">Book Title 1</h5>
+                  <p data-testid="bookItemAuthor">Author: Book Author 1</p>
+                  <p data-testid="bookItemYear">Year: 2030</p>
+                  <div>
+                    <button data-testid="bookItemIsCompleteButton">
+                      <i class="uncheck-button material-icons">check_circle</i>
+                    </button>
+                    <button data-testid="bookItemDeleteButton">
+                      <i class="delete-button material-icons">delete</i>
+                    </button>
+                    <button data-testid="bookItemEditButton">
+                      <i class="edit-button material-icons">edit</i>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
-  
-        <section class="completeBook-content">
-          <h2>Complete Book</h2>
-  
-          <div id="completeBookList" data-testid="completeBookList">
-            <!-- 
-              Ini adalah struktur HTML untuk masing-masing buku.
-              Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
-            -->
-            <div data-bookid="456456456" data-testid="bookItem">
-              <h3 data-testid="bookItemTitle">Book Title 2</h3>
-              <p data-testid="bookItemAuthor">Author: Book Author 2</p>
-              <p data-testid="bookItemYear">Year: 2030</p>
-              <div>
-                <button data-testid="bookItemIsCompleteButton">Completed</button>
-                <button data-testid="bookItemDeleteButton">Delete Book</button>
-                <button data-testid="bookItemEditButton">Edit Book</button>
+            </section>
+            <section class="completeBook card">
+              <h3>Complete Book</h3>
+              <div id="completeBookList" data-testid="completeBookList">
+                <!-- 
+                  Ini adalah struktur HTML untuk masing-masing buku.
+                  Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
+                -->
+                <div data-bookid="456456456" data-testid="bookItem" class="bookItem card">
+                  <h5 data-testid="bookItemTitle">Book Title 2</h5>
+                  <p data-testid="bookItemAuthor">Author: Book Author 2</p>
+                  <p data-testid="bookItemYear">Year: 2030</p>
+                  <div>
+                    <button data-testid="bookItemIsCompleteButton">
+                      <i class="check-button material-icons">check_circle</i>
+                    </button>
+                    <button data-testid="bookItemDeleteButton">
+                      <i class="delete-button material-icons">delete</i>
+                    </button>
+                    <button data-testid="bookItemEditButton">
+                      <i class="edit-button material-icons">edit</i>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
-
-      </div>
+        </div>
+        <div class="side-content">
+          <section class="addBook card">
+            <h3>Add Book</h3>
+            <form id="bookForm" data-testid="bookForm" class="addBook-form">
+              <div>
+                <label for="bookFormTitle">Title</label>
+                <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
+              </div>
+              <div>
+                <label for="bookFormAuthor">Author</label>
+                <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
+              </div>
+              <div>
+                <label for="bookFormYear">Year</label>
+                <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
+              </div>
+              <div class="checkBook">
+                <label for="bookFormIsComplete">Completed</label>
+                <input
+                  id="bookFormIsComplete"
+                  type="checkbox"
+                  data-testid="bookFormIsCompleteCheckbox"
+                />
+              </div>
+              <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton" class="addBook-button">
+                Add
+              </button>
+            </form>
+          </section>
+        </div>
     </main>
   </body>
 </html>
