@@ -45,7 +45,7 @@ function load() {
 }
 
 function generateId() {
-    return +new Date();
+    return crypto.randomUUID();
 }
 
 function generateBookObject(id, title, author, year, isComplete) {
@@ -100,12 +100,7 @@ function uncheckBook(bookId) {
 }
 
 function findBookIndex(bookId) {
-    for (const index in books) {
-        if (books[index].id === parseInt(bookId)) {
-            return index;
-        }
-    }
-    return -1;
+    return books.findIndex(book => book.id === parseInt(bookId));
 }
 
 function deleteBook(bookId) {
@@ -200,11 +195,9 @@ function makeBook(bookObject) {
     isCompleteButton.setAttribute('data-testid', 'bookItemIsCompleteButton')
     isCompleteButton.append(isCompleteIcon);
     isCompleteButton.addEventListener('click', () => {
-        if (bookObject.isComplete) {
-            uncheckBook(id);
-        } else {
-            checkBook(id);
-        }
+        bookObject.isComplete
+        ?   uncheckBook(id)
+        :    checkBook(id);
     })
 
     const deleteIcon = document.createElement('i');
