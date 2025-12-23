@@ -163,6 +163,9 @@ function saveEditBook() {
     editBookId = null;
     overlay.setAttribute('hidden', '');
     editBookDialog.style.display = 'none';
+
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    save();
 }
 
 function makeBook(bookObject) {
@@ -191,6 +194,9 @@ function makeBook(bookObject) {
     isCompleteButton.append(isCompleteIcon);
     isCompleteButton.addEventListener('click', () => {
         isComplete ? uncheckBook(id) : checkBook(id);
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        save();
     })
 
     const deleteIcon = document.createElement('i');
@@ -204,6 +210,9 @@ function makeBook(bookObject) {
 
     deleteButton.addEventListener('click', () => {
         confirmDelete(id);
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        save();
     })
     
     const editIcon = document.createElement('i');
@@ -217,6 +226,9 @@ function makeBook(bookObject) {
 
     editButton.addEventListener('click', () => {
         showEditBook(id);
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        save();
     })
     
     const bookItem = document.createElement('div');
