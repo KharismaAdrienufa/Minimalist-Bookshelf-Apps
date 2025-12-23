@@ -62,7 +62,7 @@ function addBook() {
     const bookId = generateId();
     const bookTitle = document.getElementById('bookFormTitle').value;
     const bookAuthor = document.getElementById('bookFormAuthor').value;
-    const bookYear = document.getElementById('bookFormYear').value;
+    const bookYear = parseInt(document.getElementById('bookFormYear').value);
     const isCompleted = document.getElementById('bookFormIsComplete').checked;
 
     const bookObject = generateBookObject(bookId, bookTitle, bookAuthor, bookYear, isCompleted);
@@ -74,7 +74,7 @@ function addBook() {
 
 function findBook(bookId) {
     for (const book of books) {
-        if (book.id === bookId) return book;
+        if (book.id === parseInt(bookId)) return book;
     }
     return null;
 }
@@ -100,7 +100,12 @@ function uncheckBook(bookId) {
 }
 
 function findBookIndex(bookId) {
-    return books.findIndex(book => book.id === bookId);
+    for (const index in books) {
+        if (books[index].id === parseInt(bookId)) {
+            return index;
+        }
+    }
+    return -1;
 }
 
 function deleteBook(bookId) {
@@ -109,8 +114,6 @@ function deleteBook(bookId) {
     if (bookIndex == -1) return;
 
     books.splice(bookIndex, 1);
-    document.dispatchEvent(new Event(RENDER_EVENT));
-    save();
 }
 
 function confirmDelete(bookId) {
@@ -123,6 +126,10 @@ function confirmDelete(bookId) {
 
     yesButton.onclick = () => {
         deleteBook(bookId);
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        save();
+
         overlay.setAttribute('hidden', '');
         confirmDialog.style.display = 'none';
     };
@@ -193,10 +200,11 @@ function makeBook(bookObject) {
     isCompleteButton.setAttribute('data-testid', 'bookItemIsCompleteButton')
     isCompleteButton.append(isCompleteIcon);
     isCompleteButton.addEventListener('click', () => {
-        isComplete ? uncheckBook(id) : checkBook(id);
-
-        document.dispatchEvent(new Event(RENDER_EVENT));
-        save();
+        if (bookObject.isComplete) {
+            uncheckBook(id);
+        } else {
+            checkBook(id);
+        }
     })
 
     const deleteIcon = document.createElement('i');
@@ -210,9 +218,6 @@ function makeBook(bookObject) {
 
     deleteButton.addEventListener('click', () => {
         confirmDelete(id);
-
-        document.dispatchEvent(new Event(RENDER_EVENT));
-        save();
     })
     
     const editIcon = document.createElement('i');
@@ -226,9 +231,6 @@ function makeBook(bookObject) {
 
     editButton.addEventListener('click', () => {
         showEditBook(id);
-
-        document.dispatchEvent(new Event(RENDER_EVENT));
-        save();
     })
     
     const bookItem = document.createElement('div');
@@ -264,10 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     editBookForm.addEventListener('submit', (event) => {
-        event.preventDefault();
         saveEditBook();
-        document.dispatchEvent(new Event(RENDER_EVENT));
-        save();
     })
 
     document.getElementById('cancelEditBook').addEventListener('click', () => {
