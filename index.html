@@ -31,52 +31,12 @@
           <div class="listBook-content">
             <section class="incompleteBook card">
               <h3>Incomplete Book</h3>
-              <div id="incompleteBookList" data-testid="incompleteBookList">
-                <!-- 
-                  Ini adalah struktur HTML untuk masing-masing buku.
-                  Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
-                -->
-                <div data-bookid="123123123" data-testid="bookItem" class="bookItem card">
-                  <h5 data-testid="bookItemTitle">Book Title 1</h5>
-                  <p data-testid="bookItemAuthor">Author: Book Author 1</p>
-                  <p data-testid="bookItemYear">Year: 2030</p>
-                  <div>
-                    <button data-testid="bookItemIsCompleteButton">
-                      <i class="uncheck-button material-icons">check_circle</i>
-                    </button>
-                    <button data-testid="bookItemDeleteButton">
-                      <i class="delete-button material-icons">delete</i>
-                    </button>
-                    <button data-testid="bookItemEditButton">
-                      <i class="edit-button material-icons">edit</i>
-                    </button>
-                  </div>
-                </div>
+              <div id="incompleteBookList" data-testid="incompleteBookList" class="incompleteBookList">
               </div>
             </section>
             <section class="completeBook card">
               <h3>Complete Book</h3>
-              <div id="completeBookList" data-testid="completeBookList">
-                <!-- 
-                  Ini adalah struktur HTML untuk masing-masing buku.
-                  Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
-                -->
-                <div data-bookid="456456456" data-testid="bookItem" class="bookItem card">
-                  <h5 data-testid="bookItemTitle">Book Title 2</h5>
-                  <p data-testid="bookItemAuthor">Author: Book Author 2</p>
-                  <p data-testid="bookItemYear">Year: 2030</p>
-                  <div>
-                    <button data-testid="bookItemIsCompleteButton">
-                      <i class="check-button material-icons">check_circle</i>
-                    </button>
-                    <button data-testid="bookItemDeleteButton">
-                      <i class="delete-button material-icons">delete</i>
-                    </button>
-                    <button data-testid="bookItemEditButton">
-                      <i class="edit-button material-icons">edit</i>
-                    </button>
-                  </div>
-                </div>
+              <div id="completeBookList" data-testid="completeBookList" class="completeBookList">
               </div>
             </section>
           </div>
@@ -103,14 +63,51 @@
                   id="bookFormIsComplete"
                   type="checkbox"
                   data-testid="bookFormIsCompleteCheckbox"
-                />
-              </div>
+                  />
+                </div>
               <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton" class="addBook-button">
-                Add
+                add
               </button>
             </form>
           </section>
         </div>
-    </main>
+        <div id="overlay" class="overlay" hidden>
+          <div id="confirmDelete" class="confirm card">
+            <p>Are you sure you want to delete this book?</p>
+            <section class="confirm-button">
+              <button id="yes-button" class="yes-button">yes</button>
+              <button id="no-button" class="no-button">no</button>
+            </section>
+          </div>
+          <div id="editBook" class="editBook card">
+            <h3>Edit Book</h3>
+            <form id="editBookForm" class="editBook-form">
+              <div>
+                <label for="newBookTitle">New Title</label>
+                <input id="newBookTitle" type="text" required />
+              </div>
+              <div>
+                <label for="newBookAuthor">New Author</label>
+                <input id="newBookAuthor" type="text" required />
+              </div>
+              <div>
+                <label for="newBookYear">New Year</label>
+                <input id="newBookYear" type="number" required />
+              </div>
+              <div class="checkBook">
+                <label for="newBookIsComplete">Completed</label>
+                <input
+                  id="newBookIsComplete"
+                  type="checkbox"
+                />
+              </div>
+              <div class="editBookAction-button">
+                <button id="editBookFormSubmit" type="submit" class="editBook-button">save</button>
+                <button id="cancelEditBook" class="cancelEditBook-button">cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
   </body>
 </html>

@@ -102,16 +102,33 @@ p {
 
 .incompleteBook,
 .completeBook {
+    width: 20%;
     background-color: var(--color-ash-purple);
 }
 
+.incompleteBookList,
+.completeBookList {
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 10px;
+}
+
+.incompleteBookList::-webkit-scrollbar,
+.completeBookList::-webkit-scrollbar {
+    display: none;
+}
+
 .bookItem,
-.addBook {
+.addBook,
+.editBook {
     background-color: white;
 }
 
 .bookItem {
     position: relative;
+    margin: 10px 15px;
 }
 
 .uncheck-button,
@@ -154,14 +171,16 @@ label {
     font-size: small;
 }
 
-.addBook-form {
+.addBook-form,
+.editBook-form {
     display: flex;
     flex-direction: column;
     gap: 25px;
     padding: 15px;
 }
 
-.addBook-form input {
+.addBook-form input,
+.editBook-form input {
     border: none;
     border-bottom: 1px solid var(--color-pink);
 }
@@ -184,5 +203,68 @@ input[type="checkbox"] {
     padding: 5px;
     background-color: var(--color-purple);
     align-self: center;
+}
+
+.overlay {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+[hidden] {
+    display: none;
+}
+
+.confirm {
+    background-color: white;
+    padding: 20px;
+    display: none;
+}
+
+.confirm-button {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.yes-button {
+    background-color: var(--color-pink);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.no-button {
+    background-color: var(--color-ash-purple);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.editBook {
+    display: none;
+}
+
+.editBookAction-button {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.editBook-button,
+.cancelEditBook-button {
+    width: 60px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.editBook-button {
+    background-color: var(--color-purple);
+}
+
+.cancelEditBook-button {
+    background-color: var(--color-ash-purple);
 }
 
